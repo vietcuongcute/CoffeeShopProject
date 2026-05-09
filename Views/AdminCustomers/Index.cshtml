@@ -1,0 +1,59 @@
+@model List<Microsoft.AspNetCore.Identity.IdentityUser>
+
+@{
+    ViewData["Title"] = "Quản lý khách hàng";
+}
+
+<div class="page-header">
+    <div>
+        <p class="eyebrow">Admin Dashboard</p>
+        <h1>Quản lý khách hàng</h1>
+        <p class="text-muted">Danh sách tài khoản khách hàng đã đăng ký.</p>
+    </div>
+</div>
+
+<div class="modern-card">
+    @if (!Model.Any())
+    {
+        <div class="text-center py-5">
+            <h3>Chưa có khách hàng</h3>
+            <p class="text-muted">Khi người dùng đăng ký tài khoản, thông tin sẽ hiện ở đây.</p>
+        </div>
+    }
+    else
+    {
+        <table class="table align-middle">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Tên đăng nhập</th>
+                    <th>Xác nhận Email</th>
+                    <th>Số điện thoại</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var customer in Model)
+                {
+                    <tr>
+                        <td>
+                            <strong>@customer.Email</strong>
+                        </td>
+                        <td>@customer.UserName</td>
+                        <td>
+                            @if (customer.EmailConfirmed)
+                            {
+                                <span class="badge bg-success">Có</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-secondary">Không</span>
+                            }
+                        </td>
+                        <td>@(customer.PhoneNumber ?? "Chưa có")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

@@ -1,0 +1,70 @@
+@model CoffeeShop.Models.Product
+
+@{
+    ViewData["Title"] = "Thêm món";
+}
+
+<div class="form-page">
+    <div class="modern-card form-card">
+        <p class="eyebrow">Admin</p>
+        <h1>Thêm món</h1>
+        <p class="text-muted">Tạo món cà phê mới cho cửa hàng.</p>
+
+        <form asp-controller="AdminProducts" asp-action="Create" method="post">
+            @Html.AntiForgeryToken()
+
+            <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label">Tên món</label>
+                <input asp-for="Name" class="form-control modern-input" placeholder="Vietnam Coffee" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Detail" class="form-label">Mô tả</label>
+                <textarea asp-for="Detail" class="form-control modern-input" rows="4" placeholder="Cà phê thơm ngon, đậm vị."></textarea>
+                <span asp-validation-for="Detail" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ImageUrl" class="form-label">Link hình ảnh</label>
+                <input asp-for="ImageUrl" class="form-control modern-input" placeholder="Có thể bỏ trống để dùng ảnh mặc định" />
+                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Price" class="form-label">Giá</label>
+                <input asp-for="Price"
+                       class="form-control modern-input"
+                       type="number"
+                       step="1000"
+                       min="1000"
+                       placeholder="25000" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+                <div class="form-text">Nhập giá dạng số, ví dụ: 25000, không nhập 25.000 hoặc 25k.</div>
+            </div>
+
+            <div class="form-check mb-4">
+                <input asp-for="IsTrendingProduct" class="form-check-input" />
+                <label asp-for="IsTrendingProduct" class="form-check-label">
+                    Món nổi bật
+                </label>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-primary rounded-pill px-4">
+                    Lưu món
+                </button>
+
+                <a asp-action="Index" class="btn btn-outline-secondary rounded-pill px-4">
+                    Hủy
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

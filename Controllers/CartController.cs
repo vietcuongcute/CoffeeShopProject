@@ -1,6 +1,7 @@
 using CoffeeShop.Extensions;
 using CoffeeShop.Models;
 using CoffeeShop.Models.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoffeeShop.Controllers
@@ -21,6 +22,7 @@ namespace CoffeeShop.Controllers
             return View(cart);
         }
 
+        [Authorize]
         public IActionResult AddToCart(int id)
         {
             var product = _productRepository.GetProductDetail(id);

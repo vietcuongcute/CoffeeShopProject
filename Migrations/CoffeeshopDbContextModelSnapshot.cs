@@ -87,29 +87,47 @@ namespace CoffeeShop.Migrations
                         new
                         {
                             Id = 1,
-                            Detail = "America coffee product",
-                            ImageUrl = "https://insanelygoodrecipes.com/wp-content/uploads/2020/07/Cup-Of-Creamy-Coffee-1024x536.webp",
+                            Detail = "Cà phê America thơm nhẹ, vị thanh và dễ uống.",
+                            ImageUrl = "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=80",
                             IsTrendingProduct = true,
                             Name = "America",
-                            Price = 25m
+                            Price = 25000m
                         },
                         new
                         {
                             Id = 2,
-                            Detail = "Vietnamese coffee product",
-                            ImageUrl = "https://insanelygoodrecipes.com/wp-content/uploads/2020/07/Cup-Of-Creamy-Coffee-1024x536.webp",
+                            Detail = "Cà phê Việt Nam đậm vị, hương thơm mạnh mẽ.",
+                            ImageUrl = "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80",
                             IsTrendingProduct = true,
                             Name = "Vietnam",
-                            Price = 20m
+                            Price = 20000m
                         },
                         new
                         {
                             Id = 3,
-                            Detail = "UK coffee product",
-                            ImageUrl = "https://insanelygoodrecipes.com/wp-content/uploads/2020/07/Cup-Of-Creamy-Coffee-1024x536.webp",
+                            Detail = "Cà phê phong cách Anh, dịu nhẹ và cân bằng.",
+                            ImageUrl = "https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=900&q=80",
                             IsTrendingProduct = false,
                             Name = "United Kingdom",
-                            Price = 15m
+                            Price = 30000m
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Detail = "Cà phê India đậm đà, hậu vị ấm.",
+                            ImageUrl = "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=900&q=80",
+                            IsTrendingProduct = false,
+                            Name = "India",
+                            Price = 28000m
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Detail = "Cà phê Pháp sang trọng, hương vị tinh tế.",
+                            ImageUrl = "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=900&q=80",
+                            IsTrendingProduct = true,
+                            Name = "France",
+                            Price = 35000m
                         });
                 });
 

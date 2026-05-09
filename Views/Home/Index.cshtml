@@ -1,8 +1,29 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Trang chủ";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="hero">
+    <div>
+        <p class="eyebrow">Fresh Coffee Everyday</p>
+        <h1>Cà phê ngon cho ngày mới.</h1>
+        <p>
+            Thưởng thức những ly cà phê thơm ngon, đậm vị và được chọn lọc kỹ càng
+            từ các hạt cà phê chất lượng.
+        </p>
+
+        <div class="d-flex gap-2 flex-wrap mt-4">
+            <a asp-controller="Products" asp-action="Shop" class="btn btn-primary btn-lg rounded-pill px-4">
+                Mua ngay
+            </a>
+
+            <a asp-controller="Products" asp-action="Shop" class="btn btn-outline-dark btn-lg rounded-pill px-4">
+                Xem menu
+            </a>
+        </div>
+    </div>
+
+    <div class="hero-card">
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80"
+             alt="Coffee cup" />
+    </div>
+</section>

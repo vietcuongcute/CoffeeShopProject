@@ -1,0 +1,72 @@
+@model IEnumerable<CoffeeShop.Models.Product>
+
+@{
+    ViewData["Title"] = "Quản lý món";
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success rounded-4">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<div class="page-header">
+    <div>
+        <p class="eyebrow">Admin Dashboard</p>
+        <h1>Quản lý món</h1>
+        <p class="text-muted">Thêm, sửa, xóa các món cà phê trong cửa hàng.</p>
+    </div>
+
+    <a asp-action="Create" class="btn btn-primary rounded-pill px-4">
+        + Thêm món
+    </a>
+</div>
+
+<div class="modern-card">
+    <table class="table align-middle">
+        <thead>
+            <tr>
+                <th>Hình ảnh</th>
+                <th>Tên món</th>
+                <th>Giá</th>
+                <th>Nổi bật</th>
+                <th class="text-end">Thao tác</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="@product.ImageUrl" class="admin-product-img" alt="@product.Name" />
+                    </td>
+                    <td>
+                        <strong>@product.Name</strong>
+                        <div class="text-muted small">@product.Detail</div>
+                    </td>
+                    <td>@product.Price.ToString("N0") đ</td>
+                    <td>
+                        @if (product.IsTrendingProduct)
+                        {
+                            <span class="badge bg-success">Có</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-secondary">Không</span>
+                        }
+                    </td>
+                    <td class="text-end">
+                        <a asp-action="Edit" asp-route-id="@product.Id" class="btn btn-sm btn-outline-primary rounded-pill px-3">
+                            Sửa
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@product.Id" class="btn btn-sm btn-outline-danger rounded-pill px-3">
+                            Xóa
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

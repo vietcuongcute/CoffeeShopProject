@@ -1,0 +1,32 @@
+@model CoffeeShop.Models.Product
+
+@{
+    ViewData["Title"] = "Xóa món";
+}
+
+<div class="form-page">
+    <div class="modern-card form-card text-center">
+        <img src="@Model.ImageUrl" class="delete-preview-img" alt="@Model.Name" />
+
+        <h1>Xóa món?</h1>
+        <p class="text-muted">
+            Bạn có chắc muốn xóa <strong>@Model.Name</strong> không?
+        </p>
+
+        <form asp-action="DeleteConfirmed" method="post">
+            @Html.AntiForgeryToken()
+
+            <input type="hidden" asp-for="Id" />
+
+            <div class="d-flex justify-content-center gap-2">
+                <button type="submit" class="btn btn-danger rounded-pill px-4">
+                    Xóa
+                </button>
+
+                <a asp-action="Index" class="btn btn-outline-secondary rounded-pill px-4">
+                    Hủy
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,67 +1,90 @@
 @model List<CoffeeShop.Models.CartItem>
 
 @{
-    ViewData["Title"] = "Shopping Cart";
+    ViewData["Title"] = "Giỏ hàng";
     var total = Model.Sum(item => item.Total);
 }
 
-<h1>Shopping Cart</h1>
+<div class="page-header">
+    <div>
+        <p class="eyebrow">Đơn hàng của bạn</p>
+        <h1>Giỏ hàng</h1>
+        <p class="text-muted">Kiểm tra các món cà phê đã chọn trước khi thanh toán.</p>
+    </div>
+</div>
 
 @if (!Model.Any())
 {
-    <div class="alert alert-info">
-        Your cart is empty.
-    </div>
+    <div class="modern-card text-center py-5">
+        <h2>Giỏ hàng đang trống</h2>
+        <p class="text-muted">Hãy thêm một vài món cà phê vào giỏ hàng.</p>
 
-    <a asp-controller="Products" asp-action="Shop" class="btn btn-primary">
-        Continue Shopping
-    </a>
+        <a asp-controller="Products" asp-action="Shop" class="btn btn-primary rounded-pill px-4">
+            Tiếp tục mua hàng
+        </a>
+    </div>
 }
 else
 {
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Image</th>
-                <th>Product</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Total</th>
-                <th></th>
-            </tr>
-        </thead>
-
-        <tbody>
-            @foreach (var item in Model)
-            {
+    <div class="modern-card">
+        <table class="table align-middle cart-table">
+            <thead>
                 <tr>
-                    <td>
-                        <img src="@item.ImageUrl" width="80" alt="@item.ProductName" />
-                    </td>
-                    <td>@item.ProductName</td>
-                    <td>@item.Price.ToString("C")</td>
-                    <td>@item.Quantity</td>
-                    <td>@item.Total.ToString("C")</td>
-                    <td>
-                        <a asp-controller="Cart"
-                           asp-action="RemoveFromCart"
-                           asp-route-id="@item.ProductId"
-                           class="btn btn-danger btn-sm">
-                            Remove
-                        </a>
-                    </td>
+                    <th>Sản phẩm</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Thành tiền</th>
+                    <th class="text-end">Thao tác</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
 
-    <h3>Total: @total.ToString("C")</h3>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center gap-3">
+                                <img src="@item.ImageUrl" alt="@item.ProductName" />
+                                <strong>@item.ProductName</strong>
+                            </div>
+                        </td>
+                        <td>@item.Price.ToString("N0") đ</td>
+                        <td>@item.Quantity</td>
+                        <td>@item.Total.ToString("N0") đ</td>
+                        <td class="text-end">
+                            <a asp-controller="Cart"
+                               asp-action="RemoveFromCart"
+                               asp-route-id="@item.ProductId"
+                               class="btn btn-outline-danger btn-sm rounded-pill px-3">
+                                Xóa
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
 
-    <a asp-controller="Products" asp-action="Shop" class="btn btn-secondary">
-        Continue Shopping
-    </a>
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mt-4">
+    <h3 class="m-0">
+        Tổng tiền:
+        <span class="product-price">
+            @total.ToString("N0", new System.Globalization.CultureInfo("vi-VN")) đ
+        </span>
+    </h3>
 
-    <a asp-controller="Cart" asp-action="ClearCart" class="btn btn-warning">
-        Clear Cart
-    </a>
+    <div class="d-flex gap-2 flex-wrap">
+        <a asp-controller="Products" asp-action="Shop" class="btn btn-outline-secondary rounded-pill px-4">
+            Tiếp tục mua
+        </a>
+
+        <a asp-controller="Cart" asp-action="ClearCart" class="btn btn-outline-warning rounded-pill px-4">
+            Xóa giỏ hàng
+        </a>
+
+        <a asp-controller="Orders" asp-action="PlaceOrder" class="btn btn-primary rounded-pill px-4">
+            Thanh toán
+        </a>
+    </div>
+</div>
+    </div>
 }

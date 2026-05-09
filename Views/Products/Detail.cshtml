@@ -4,27 +4,40 @@
     ViewData["Title"] = Model.Name;
 }
 
-<div class="row">
-    <div class="col-md-6">
-        <img src="@Model.ImageUrl" class="img-fluid rounded" alt="@Model.Name" />
-    </div>
+<div class="modern-card">
+    <div class="row g-5 align-items-center">
+        <div class="col-md-6">
+            <img src="@Model.ImageUrl"
+                 class="img-fluid rounded-4 shadow-sm detail-img"
+                 alt="@Model.Name" />
+        </div>
 
-    <div class="col-md-6">
-        <h1>@Model.Name</h1>
-        <p>@Model.Detail</p>
-        <h3>@Model.Price.ToString("C")</h3>
+        <div class="col-md-6">
+            <p class="eyebrow">Chi tiết món</p>
+            <h1 class="display-4 fw-bold">@Model.Name</h1>
+            <p class="text-muted fs-5">@Model.Detail</p>
 
-        
-        <a asp-controller="Products"
-           asp-action="Shop"
-           class="btn btn-secondary">
-            Back to Shop
-        </a>
-        <a asp-controller="Cart"
-   asp-action="AddToCart"
-   asp-route-id="@Model.Id"
-   class="btn btn-success">
-    Add to Cart
-        </a>
+            @if (Model.IsTrendingProduct)
+            {
+                <span class="badge bg-success mb-3">Món nổi bật</span>
+            }
+
+            <h2 class="product-price mb-4">@Model.Price.ToString("N0") đ</h2>
+
+            <div class="d-flex gap-2 flex-wrap">
+                <a asp-controller="Cart"
+                   asp-action="AddToCart"
+                   asp-route-id="@Model.Id"
+                   class="btn btn-primary btn-lg rounded-pill px-4">
+                    Thêm vào giỏ
+                </a>
+
+                <a asp-controller="Products"
+                   asp-action="Shop"
+                   class="btn btn-outline-secondary btn-lg rounded-pill px-4">
+                    Quay lại cửa hàng
+                </a>
+            </div>
+        </div>
     </div>
 </div>

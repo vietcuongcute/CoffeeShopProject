@@ -1,12 +1,17 @@
 @{
-    ViewData["Title"] = "Order Success";
+    ViewData["Title"] = "Đặt hàng thành công";
 }
 
-<div class="alert alert-success">
-    <h1>Order Success</h1>
-    <p>Thank you! Your order has been placed successfully.</p>
-</div>
+<div class="modern-card text-center py-5">
+    <p class="eyebrow">Order Success</p>
 
-<a asp-controller="Products" asp-action="Shop" class="btn btn-primary">
-    Back to Shop
-</a>
+    <h1>Đặt hàng thành công!</h1>
+
+    <p class="text-muted fs-5">
+        Cảm ơn bạn đã đặt hàng tại CoffeeShop. Đơn hàng của bạn đã được ghi nhận.
+    </p>
+
+    <a asp-controller="Products" asp-action="Shop" class="btn btn-primary rounded-pill px-4 mt-3">
+        Tiếp tục mua hàng
+    </a>
+</div>

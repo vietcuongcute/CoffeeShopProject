@@ -1,68 +1,43 @@
-@* @model IEnumerable<CoffeeShop.Models.Product>
+@model IEnumerable<CoffeeShop.Models.Product>
 
 @{
-    ViewData["Title"] = "Shop Coffee";
+    ViewData["Title"] = "Cửa hàng";
 }
 
-<h1 class="mb-4">Shop Coffee</h1>
+<div class="page-header">
+    <div>
+        <p class="eyebrow">Menu cà phê</p>
+        <h1>Cửa hàng</h1>
+        <p class="text-muted">Chọn món cà phê yêu thích và thêm vào giỏ hàng.</p>
+    </div>
+</div>
 
-<div class="row">
+<div class="product-grid">
     @foreach (var item in Model)
     {
-        <div class="col-md-4 mb-4">
-            <div class="card h-100">
-                <img src="@item.ImageUrl" class="card-img-top" alt="@item.Name" style="height: 220px; object-fit: cover;" />
+        <div class="product-card">
+            <img src="@item.ImageUrl" alt="@item.Name" />
 
-                <div class="card-body">
-                    <h5 class="card-title">@item.Name</h5>
-                    <p class="card-text">@item.Detail</p>
-                    <p class="fw-bold">@item.Price.ToString("C")</p>
+            <div class="product-card-body">
+                @if (item.IsTrendingProduct)
+                {
+                    <span class="badge bg-success mb-2">Nổi bật</span>
+                }
+
+                <h3>@item.Name</h3>
+                <p class="text-muted">@item.Detail</p>
+
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                    <span class="product-price">@item.Price.ToString("N0") đ</span>
 
                     <a asp-controller="Products"
                        asp-action="Detail"
                        asp-route-id="@item.Id"
-                       class="btn btn-primary">
-                        View Detail
+                       class="btn btn-outline-dark rounded-pill">
+                        Xem
                     </a>
                 </div>
             </div>
         </div>
     }
-</div> *@
-
-@model IEnumerable<CoffeeShop.Models.Product>
-
-<h1>Shop</h1>
-
-@if (Model == null || !Model.Any())
-{
-    <p>Chưa có sản phẩm nào trong database.</p>
-}
-else
-{
-    <div class="row">
-        @foreach (var product in Model)
-        {
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    @if (!string.IsNullOrEmpty(product.ImageUrl))
-                    {
-                        <img src="@product.ImageUrl" class="card-img-top" alt="@product.Name" />
-                    }
-
-                    <div class="card-body">
-                        <h5 class="card-title">@product.Name</h5>
-                        <p class="card-text">@product.Detail</p>
-                        <p class="card-text"><strong>@product.Price.ToString("N0") đ</strong></p>
-                        <a asp-controller="Products"
-                           asp-action="Detail"
-                           asp-route-id="@product.Id"
-                           class="btn btn-primary">
-                            Xem chi tiết
-                        </a>
-                    </div>
-                </div>
-            </div>
-        }
-    </div>
-}
+</div>
