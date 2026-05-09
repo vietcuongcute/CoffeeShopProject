@@ -1,9 +1,10 @@
 using CoffeeShop.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace CoffeeShop.Data
 {
-    public class CoffeeshopDbContext : DbContext
+    public class CoffeeshopDbContext : IdentityDbContext
     {
         public CoffeeshopDbContext(DbContextOptions<CoffeeshopDbContext> options)
             : base(options)
@@ -11,6 +12,7 @@ namespace CoffeeShop.Data
         }
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<Order> Orders { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -32,42 +34,6 @@ namespace CoffeeShop.Data
                     Name = "Vietnam",
                     Price = 20,
                     Detail = "Vietnamese coffee product",
-                    ImageUrl = "https://insanelygoodrecipes.com/wp-content/uploads/2020/07/Cup-Of-Creamy-Coffee-1024x536.webp",
-                    IsTrendingProduct = true
-                },
-                new Product
-                {
-                    Id = 3,
-                    Name = "United Kingdom",
-                    Price = 15,
-                    Detail = "UK coffee product",
-                    ImageUrl = "https://insanelygoodrecipes.com/wp-content/uploads/2020/07/Cup-Of-Creamy-Coffee-1024x536.webp",
-                    IsTrendingProduct = false
-                },
-                new Product
-                {
-                    Id = 4,
-                    Name = "India",
-                    Price = 15,
-                    Detail = "India coffee product",
-                    ImageUrl = "https://insanelygoodrecipes.com/wp-content/uploads/2020/07/Cup-Of-Creamy-Coffee-1024x536.webp",
-                    IsTrendingProduct = false
-                },
-                new Product
-                {
-                    Id = 5,
-                    Name = "Russian",
-                    Price = 25,
-                    Detail = "Russian coffee product",
-                    ImageUrl = "https://insanelygoodrecipes.com/wp-content/uploads/2020/07/Cup-Of-Creamy-Coffee-1024x536.webp",
-                    IsTrendingProduct = false
-                },
-                new Product
-                {
-                    Id = 6,
-                    Name = "France",
-                    Price = 35,
-                    Detail = "France coffee product",
                     ImageUrl = "https://insanelygoodrecipes.com/wp-content/uploads/2020/07/Cup-Of-Creamy-Coffee-1024x536.webp",
                     IsTrendingProduct = true
                 }

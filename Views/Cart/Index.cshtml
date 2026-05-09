@@ -1,0 +1,67 @@
+@model List<CoffeeShop.Models.CartItem>
+
+@{
+    ViewData["Title"] = "Shopping Cart";
+    var total = Model.Sum(item => item.Total);
+}
+
+<h1>Shopping Cart</h1>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        Your cart is empty.
+    </div>
+
+    <a asp-controller="Products" asp-action="Shop" class="btn btn-primary">
+        Continue Shopping
+    </a>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="@item.ImageUrl" width="80" alt="@item.ProductName" />
+                    </td>
+                    <td>@item.ProductName</td>
+                    <td>@item.Price.ToString("C")</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Total.ToString("C")</td>
+                    <td>
+                        <a asp-controller="Cart"
+                           asp-action="RemoveFromCart"
+                           asp-route-id="@item.ProductId"
+                           class="btn btn-danger btn-sm">
+                            Remove
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h3>Total: @total.ToString("C")</h3>
+
+    <a asp-controller="Products" asp-action="Shop" class="btn btn-secondary">
+        Continue Shopping
+    </a>
+
+    <a asp-controller="Cart" asp-action="ClearCart" class="btn btn-warning">
+        Clear Cart
+    </a>
+}

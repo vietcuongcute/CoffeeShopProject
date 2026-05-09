@@ -55,12 +55,30 @@ TemporaryDependencyNodeTargetIdentifier=net10.0
 /warnaserror+:NU1605,SYSLIB0011
 
 [sourceFiles]
-Controllers/HomeController.cs
+Controllers/
+ CartController.cs
+ HomeController.cs
+ OrdersController.cs
+ ProductController.cs
 Data/CoffeeshopDbContext.cs
+Extensions/SessionExtentions.cs
+Migrations/
+ 20260509043953_InitialCreate.cs
+ 20260509043953_InitialCreate.Designer.cs
+ 20260509052111_AddOrderTable.cs
+ 20260509052111_AddOrderTable.Designer.cs
+ 20260509052826_AddIdentity.cs
+ 20260509052826_AddIdentity.Designer.cs
+ 20260509053913_FixPendingChanges.cs
+ 20260509053913_FixPendingChanges.Designer.cs
+ CoffeeshopDbContextModelSnapshot.cs
 Models/
+ CartItem.cs
  ErrorViewModel.cs
  Interfaces/IProductRepository.cs
+ Order.cs
  Product.cs
+ Services/ProductRepository.cs
 obj/Debug/net10.0/
  .NETCoreApp,Version=v10.0.AssemblyAttributes.cs
  CoffeeShop.AssemblyInfo.cs
@@ -381,6 +399,8 @@ Program.cs
 <NUGET>/
  azure.core/1.47.1/lib/net8.0/Azure.Core.dll
  azure.identity/1.14.2/lib/net8.0/Azure.Identity.dll
+ microsoft.aspnetcore.identity.entityframeworkcore/10.0.7/lib/net10.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+ microsoft.aspnetcore.identity.ui/10.0.7/lib/net10.0/Microsoft.AspNetCore.Identity.UI.dll
  microsoft.bcl.asyncinterfaces/8.0.0/lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll
  microsoft.bcl.cryptography/9.0.4/lib/net9.0/Microsoft.Bcl.Cryptography.dll
  microsoft.data.sqlclient/6.1.1/ref/net9.0/Microsoft.Data.SqlClient.dll
@@ -441,25 +461,41 @@ Program.cs
 obj/Debug/net10.0/CoffeeShop.GeneratedMSBuildEditorConfig.editorconfig
 
 [additionalFiles]
-Views/Home/
- Index.cshtml
- Privacy.cshtml
-Views/Shared/
- Error.cshtml
- _Layout.cshtml
- _ValidationScriptsPartial.cshtml
 Views/
+ Cart/Index.cshtml
+ Home/
+  Index.cshtml
+  Privacy.cshtml
+ Orders/
+  Checkout.cshtml
+  Success.cshtml
+ Products/
+  Detail.cshtml
+  Shop.cshtml
+ Shared/
+  Error.cshtml
+  _Layout.cshtml
+  _LoginPartial.cshtml
+  _ValidationScriptsPartial.cshtml
  _ViewImports.cshtml
  _ViewStart.cshtml
 
 [dynamicFiles]
-Views/Home/
- Index.cshtml
- Privacy.cshtml
-Views/Shared/
- Error.cshtml
- _Layout.cshtml
- _ValidationScriptsPartial.cshtml
 Views/
+ Cart/Index.cshtml
+ Home/
+  Index.cshtml
+  Privacy.cshtml
+ Orders/
+  Checkout.cshtml
+  Success.cshtml
+ Products/
+  Detail.cshtml
+  Shop.cshtml
+ Shared/
+  Error.cshtml
+  _Layout.cshtml
+  _LoginPartial.cshtml
+  _ValidationScriptsPartial.cshtml
  _ViewImports.cshtml
  _ViewStart.cshtml
