@@ -12,32 +12,4 @@
     </div>
 </div>
 
-<div class="product-grid">
-    @foreach (var item in Model)
-    {
-        <div class="product-card">
-            <img src="@item.ImageUrl" alt="@item.Name" />
-
-            <div class="product-card-body">
-                @if (item.IsTrendingProduct)
-                {
-                    <span class="badge bg-success mb-2">Nổi bật</span>
-                }
-
-                <h3>@item.Name</h3>
-                <p class="text-muted">@item.Detail</p>
-
-                <div class="d-flex justify-content-between align-items-center mt-3">
-                    <span class="product-price">@item.Price.ToString("N0") đ</span>
-
-                    <a asp-controller="Products"
-                       asp-action="Detail"
-                       asp-route-id="@item.Id"
-                       class="btn btn-outline-dark rounded-pill">
-                        Xem
-                    </a>
-                </div>
-            </div>
-        </div>
-    }
-</div>
+<partial name="_Product" model="Model"></partial>

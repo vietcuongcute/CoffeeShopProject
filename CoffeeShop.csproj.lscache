@@ -64,7 +64,7 @@ Controllers/
  CartController.cs
  HomeController.cs
  OrdersController.cs
- ProductController.cs
+ ProductsController.cs
 Data/CoffeeshopDbContext.cs
 Extensions/SessionExtentions.cs
 Migrations/
@@ -546,6 +546,7 @@ Views/
   Error.cshtml
   _Layout.cshtml
   _LoginPartial.cshtml
+  _Product.cshtml
   _ValidationScriptsPartial.cshtml
  _ViewImports.cshtml
  _ViewStart.cshtml
@@ -578,6 +579,7 @@ Views/
   Error.cshtml
   _Layout.cshtml
   _LoginPartial.cshtml
+  _Product.cshtml
   _ValidationScriptsPartial.cshtml
  _ViewImports.cshtml
  _ViewStart.cshtml

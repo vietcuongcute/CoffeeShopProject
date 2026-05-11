@@ -5,22 +5,22 @@ namespace CoffeeShop.Controllers
 {
     public class ProductsController : Controller
     {
-        private readonly IProductRepository _productRepository;
+        private readonly IProductRepository productRepository;
 
         public ProductsController(IProductRepository productRepository)
         {
-            _productRepository = productRepository;
+            this.productRepository = productRepository;
         }
 
         public IActionResult Shop()
         {
-            var products = _productRepository.GetAllProducts();
+            var products = productRepository.GetAllProducts();
             return View(products);
         }
 
         public IActionResult Detail(int id)
         {
-            var product = _productRepository.GetProductDetail(id);
+            var product = productRepository.GetProductDetail(id);
 
             if (product == null)
             {

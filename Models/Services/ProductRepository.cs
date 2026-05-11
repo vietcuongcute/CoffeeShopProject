@@ -6,26 +6,36 @@ namespace CoffeeShop.Models.Services
 {
     public class ProductRepository : IProductRepository
     {
-        private readonly CoffeeshopDbContext _dbContext;
+        private readonly CoffeeshopDbContext dbContext;
 
         public ProductRepository(CoffeeshopDbContext dbContext)
         {
-            _dbContext = dbContext;
+            this.dbContext = dbContext;
         }
 
         public IEnumerable<Product> GetAllProducts()
         {
-            return _dbContext.Products;
+            return dbContext.Products
+                .AsNoTracking()
+                .OrderBy(p => p.Name)
+                .ToList();
         }
 
         public IEnumerable<Product> GetTrendingProducts()
         {
-            return _dbContext.Products.Where(p => p.IsTrendingProduct);
+            return dbContext.Products
+                .AsNoTracking()
+                .Where(p => p.IsTrendingProduct)
+                .OrderBy(p => p.Name)
+                .Take(3)
+                .ToList();
         }
 
         public Product? GetProductDetail(int id)
         {
-            return _dbContext.Products.FirstOrDefault(p => p.Id == id);
+            return dbContext.Products
+                .AsNoTracking()
+                .FirstOrDefault(p => p.Id == id);
         }
     }
 }

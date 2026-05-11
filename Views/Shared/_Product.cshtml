@@ -1,0 +1,38 @@
+@model IEnumerable<CoffeeShop.Models.Product>
+
+<div class="row g-4">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-6 col-lg-4">
+            <div class="product-card h-100">
+                <img src="@item.ImageUrl" alt="@item.Name" />
+
+                <div class="p-4">
+                    <a asp-controller="Products"
+                       asp-action="Detail"
+                       asp-route-id="@item.Id"
+                       class="text-decoration-none text-dark">
+                        <h5 class="fw-bold">@item.Name</h5>
+                    </a>
+
+                    <p class="text-muted small mb-3">
+                        @(item.Detail != null && item.Detail.Length > 90
+                            ? item.Detail.Substring(0, 90) + "..."
+                            : item.Detail)
+                    </p>
+
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="price">@item.Price.ToString("C")</span>
+
+                        <a asp-controller="Products"
+                           asp-action="Detail"
+                           asp-route-id="@item.Id"
+                           class="btn btn-coffee btn-sm">
+                            View
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
